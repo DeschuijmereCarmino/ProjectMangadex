@@ -179,7 +179,16 @@ namespace ProjectMangadex.Repository
                 try
                 {
                     string url = $"{_BASEURI}/manga/{mangaId}/follow";
-                    string json = await client.GetStringAsync(url);
+                    var response = await client.PostAsync(url, null);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception($"Er ging iets mis bij het volgen van de manga.({response.StatusCode} : {response.ReasonPhrase})");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Volgen succesvol");
+                    }
                 }
                 catch (Exception ex)
                 {
