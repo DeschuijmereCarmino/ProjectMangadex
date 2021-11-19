@@ -46,6 +46,8 @@ namespace ProjectMangadex
             }
 
             await MangadexRepository.FollowMangaAsync("40bc649f-7b49-4645-859e-6cd94136e722");
+
+            await MangadexRepository.GetUserLoggedOutAsync();
         }
     }
 }
