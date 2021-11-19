@@ -22,6 +22,18 @@ namespace ProjectMangadex.Repository
             return client;
         }
 
+        private async static Task<HttpClient> GetClientWithAuth()
+        {
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("accept", "application/json");
+
+            var bearerToken = await SecureStorage.GetAsync("bearer_token");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+            return client;
+        }
+
         public static async Task<List<Manga>> GetMangasAsync()
         {
             using (var client = GetClient())
@@ -128,6 +140,36 @@ namespace ProjectMangadex.Repository
         {
             var bearerToken = await SecureStorage.GetAsync("bearer_token");
             Debug.WriteLine(bearerToken);
+        }
+
+        public static async Task<List<Manga>> GetFollowedMangasAsync()
+        {
+            using (var client = await GetClientWithAuth())
+            {
+                try
+                {
+                    string url = $"{_BASEURI}/user/follows/manga";
+
+                    string json = await client.GetStringAsync(url);
+
+                    if (json != null)
+                    {
+                        JObject newJson = JObject.Parse(json);
+                        JArray data = (JArray)newJson["data"];
+
+                        List<Manga> mangas = data.ToObject<List<Manga>>();
+
+                        return mangas;
+                    }
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
         }
 
         //END CLASS !!!!!!!
