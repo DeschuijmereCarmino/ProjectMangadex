@@ -28,6 +28,16 @@ namespace ProjectMangadex
                 Debug.WriteLine(manga.Title);
                 Debug.WriteLine(manga.Description);
             }
+
+            User user = new User
+            {
+                Username = "",
+                Password = ""
+            };
+
+            await MangadexRepository.GetUserAsync(user);
+
+            await MangadexRepository.LogToken();
         }
     }
 }

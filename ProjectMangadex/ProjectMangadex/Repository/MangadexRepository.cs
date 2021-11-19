@@ -3,7 +3,9 @@ using Newtonsoft.Json.Linq;
 using ProjectMangadex.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -121,5 +123,13 @@ namespace ProjectMangadex.Repository
                 }
             }
         }
+
+        public static async Task LogToken()
+        {
+            var bearerToken = await SecureStorage.GetAsync("bearer_token");
+            Debug.WriteLine(bearerToken);
+        }
+
+        //END CLASS !!!!!!!
     }
 }
