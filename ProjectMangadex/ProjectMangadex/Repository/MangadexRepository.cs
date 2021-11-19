@@ -172,6 +172,22 @@ namespace ProjectMangadex.Repository
             }
         }
 
+        public static async Task FollowMangaAsync(string mangaId)
+        {
+            using (var client = await GetClientWithAuth())
+            {
+                try
+                {
+                    string url = $"{_BASEURI}/manga/{mangaId}/follow";
+                    string json = await client.GetStringAsync(url);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         //END CLASS !!!!!!!
     }
 }
