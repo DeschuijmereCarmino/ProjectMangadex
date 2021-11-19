@@ -627,3 +627,4 @@ E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Androi
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\stamp\_GenerateJavaStubs.stamp
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\stamp\_GeneratePackageManagerJava.stamp
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\stamp\_ResolveLibraryProjectImports.stamp
+E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\Newtonsoft.Json.dll
