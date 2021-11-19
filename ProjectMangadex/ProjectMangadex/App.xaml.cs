@@ -19,7 +19,7 @@ namespace ProjectMangadex
             }
             else
             {
-                MainPage = new NavigationPage(new MainPage());
+                MainPage = new NavigationPage(new LoginPage());
             }
         }
 
@@ -31,7 +31,7 @@ namespace ProjectMangadex
             }
             else
             {
-                MainPage = new NavigationPage(new MainPage());
+                MainPage = new NavigationPage(new LoginPage());
             }
         }
 

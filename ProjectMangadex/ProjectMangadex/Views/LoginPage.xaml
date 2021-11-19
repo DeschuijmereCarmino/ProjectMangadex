@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectMangadex.Views.LoginPage"
+             BackgroundColor="{AppThemeBinding Light=white, Dark='#191a1c'}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Margin="16" Spacing="0" VerticalOptions="Center">
+            <Frame BackgroundColor="{AppThemeBinding Light='#f0f1f2', Dark='#2c2c2c'}" Margin="2" Padding="16" CornerRadius="8">
+                <StackLayout Spacing="20">
+                    <StackLayout>
+                        <Label FontAttributes="Bold" Text="Login to Mangadex" FontSize="Medium" TextColor="{AppThemeBinding Light='#242424', Dark=white}" HorizontalOptions="Center" />
+                        <BoxView BackgroundColor="#ff6740" HeightRequest="1"/>
+                    </StackLayout>
+                    <Grid RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Username" FontAttributes="Bold" TextColor="{AppThemeBinding Light='#242424', Dark=white}" VerticalOptions="Center" />
+                        <Entry x:Name="entUsername" TextColor="{AppThemeBinding Light='#242424', Dark=white}" Grid.Column="1" />
+                    </Grid>
+                    <Grid RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Password" FontAttributes="Bold" TextColor="{AppThemeBinding Light='#242424', Dark=white}" VerticalOptions="Center" />
+                        <Entry x:Name="entPassword" IsPassword="True" TextColor="{AppThemeBinding Light='#242424', Dark=white}" Grid.Column="1" />
+                    </Grid>
+                    <Button x:Name="btnLogin" Text="LOGIN" TextColor="White" BackgroundColor="#ff6740" CornerRadius="4"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
