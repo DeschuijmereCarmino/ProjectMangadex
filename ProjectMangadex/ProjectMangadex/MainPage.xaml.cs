@@ -16,7 +16,7 @@ namespace ProjectMangadex
         public MainPage()
         {
             InitializeComponent();
-            TestModelsAndRepository();
+            //TestModelsAndRepository();
         }
 
         private async void TestModelsAndRepository()
