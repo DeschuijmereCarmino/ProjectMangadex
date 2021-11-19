@@ -38,6 +38,12 @@ namespace ProjectMangadex
             await MangadexRepository.GetUserAsync(user);
 
             await MangadexRepository.LogToken();
+
+            List<Manga> followedMangas = await MangadexRepository.GetFollowedMangasAsync();
+            foreach (var followedManga in followedMangas)
+            {
+                Debug.WriteLine(followedManga.Title);
+            }
         }
     }
 }
