@@ -16,7 +16,13 @@ namespace ProjectMangadex
         public MainPage()
         {
             InitializeComponent();
+            LoadData();
             //TestModelsAndRepository();
+        }
+
+        private async void LoadData()
+        {
+            clvMangas.ItemsSource = await MangadexRepository.GetMangasAsync();
         }
 
         private async void TestModelsAndRepository()
