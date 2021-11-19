@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using ProjectMangadex.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace ProjectMangadex.Repository
 {
@@ -81,5 +83,43 @@ namespace ProjectMangadex.Repository
             }
         }
 
+        public static async Task<bool> GetUserAsync(User user)
+        {
+            using (var client = GetClient())
+            {
+                try
+                {
+                    string url = $"{_BASEURI}/auth/login";
+
+                    string json = JsonConvert.SerializeObject(user);
+
+                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseJson = await response.Content.ReadAsStringAsync();
+
+                        if (responseJson != null)
+                        {
+                            JObject newJson = JObject.Parse(responseJson);
+                            await SecureStorage.SetAsync("bearer_token", (string)newJson["token"]["session"]);
+
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception($"Er ging iets mis met de post method ({response.StatusCode} : {response.ReasonPhrase})");
+                    }
+
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
     }
 }
