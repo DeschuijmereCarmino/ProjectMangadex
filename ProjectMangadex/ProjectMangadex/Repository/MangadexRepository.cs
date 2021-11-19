@@ -197,6 +197,30 @@ namespace ProjectMangadex.Repository
             }
         }
 
+        public static async Task GetUserLoggedOutAsync()
+        {
+            using (var client = await GetClientWithAuth())
+            {
+                try
+                {
+                    string url = $"{_BASEURI}/auth/logout";
+                    var response = await client.PostAsync(url, null);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception($"Er ging iets mis bij het uitloggen.({response.StatusCode} : {response.ReasonPhrase})");
+                    }
+
+                    SecureStorage.Remove("bearer_token");
+                    Debug.WriteLine("Uitloggen succesvol");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         //END CLASS !!!!!!!
     }
 }
