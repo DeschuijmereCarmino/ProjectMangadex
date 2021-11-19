@@ -34,6 +34,14 @@ namespace ProjectMangadex.Repository
 
                         List<Manga> mangas = data.ToObject<List<Manga>>();
 
+
+                        foreach (var manga in mangas)
+                        {
+                            var coverId = manga.Relationships.Find(r => r.Type == "cover_art");
+                            string cover = await GetMangaCoverByMangaIdAsync(coverId.Id);
+                            manga.Cover = $"https://uploads.mangadex.org/covers/{manga.Id}/{cover}";
+                        }
+
                         return mangas;
                     }
 
@@ -45,5 +53,33 @@ namespace ProjectMangadex.Repository
                 }
             }
         }
+
+        public static async Task<string> GetMangaCoverByMangaIdAsync(Guid mangaId)
+        {
+            using (var client = GetClient())
+            {
+
+                try
+                {
+                    string url = $"{_BASEURI}/cover/{mangaId}";
+                    string json = await client.GetStringAsync(url);
+
+                    if (json != null)
+                    {
+                        JObject newJson = JObject.Parse(json);
+                        string cover = (string)newJson["data"]["attributes"]["fileName"];
+
+                        return cover;
+                    }
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }
