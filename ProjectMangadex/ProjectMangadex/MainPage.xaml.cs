@@ -17,10 +17,10 @@ namespace ProjectMangadex
         public MainPage()
         {
             InitializeComponent();
-            LoadData();
-            //TestModelsAndRepository();
+            //LoadData();
+            TestModelsAndRepository();
 
-            clvMangas.SelectionChanged += ClvMangas_SelectionChanged;
+            //clvMangas.SelectionChanged += ClvMangas_SelectionChanged;
         }
 
         private void ClvMangas_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -49,25 +49,34 @@ namespace ProjectMangadex
                 Debug.WriteLine(manga.Description);
             }
 
-            User user = new User
+            foreach (var relationship in mangas[0].Relationships)
             {
-                Username = "",
-                Password = ""
-            };
-
-            await MangadexRepository.GetUserAsync(user);
-
-            await MangadexRepository.LogToken();
-
-            List<Manga> followedMangas = await MangadexRepository.GetFollowedMangasAsync();
-            foreach (var followedManga in followedMangas)
-            {
-                Debug.WriteLine(followedManga.Title);
+                if(relationship.Type == "author")
+                {
+                    string author = await MangadexRepository.GetAuthorByIdAsync(mangas[0].Relationships[0].Id);
+                    Debug.WriteLine(author);
+                }
             }
 
-            await MangadexRepository.FollowMangaAsync("40bc649f-7b49-4645-859e-6cd94136e722");
+            //User user = new User
+            //{
+            //    Username = "",
+            //    Password = ""
+            //};
 
-            await MangadexRepository.GetUserLoggedOutAsync();
+            //await MangadexRepository.GetUserAsync(user);
+
+            //await MangadexRepository.LogToken();
+
+            //List<Manga> followedMangas = await MangadexRepository.GetFollowedMangasAsync();
+            //foreach (var followedManga in followedMangas)
+            //{
+            //    Debug.WriteLine(followedManga.Title);
+            //}
+
+            //await MangadexRepository.FollowMangaAsync("40bc649f-7b49-4645-859e-6cd94136e722");
+
+            //await MangadexRepository.GetUserLoggedOutAsync();
         }
     }
 }
