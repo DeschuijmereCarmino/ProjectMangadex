@@ -49,6 +49,13 @@ namespace ProjectMangadex
                 Debug.WriteLine(manga.Description);
             }
 
+            List<string> creators = await MangadexRepository.GetAuthorsForMangaAsync(mangas[0]);
+
+            foreach(string creator in creators)
+            {
+                Debug.WriteLine(creator);
+            }
+
             User user = new User
             {
                 Username = "",
