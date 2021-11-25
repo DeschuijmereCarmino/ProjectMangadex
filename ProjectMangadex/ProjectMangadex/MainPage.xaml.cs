@@ -1,5 +1,6 @@
 ﻿using ProjectMangadex.Models;
 using ProjectMangadex.Repository;
+using ProjectMangadex.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,19 @@ namespace ProjectMangadex
             InitializeComponent();
             LoadData();
             //TestModelsAndRepository();
+
+            clvMangas.SelectionChanged += ClvMangas_SelectionChanged;
+        }
+
+        private void ClvMangas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (clvMangas.SelectedItem != null)
+            {
+                Manga manga = (Manga)clvMangas.SelectedItem;
+                Debug.WriteLine(manga.Title);
+                Navigation.PushAsync(new DetailPage(manga));
+                clvMangas.SelectedItem = null;
+            }
         }
 
         private async void LoadData()

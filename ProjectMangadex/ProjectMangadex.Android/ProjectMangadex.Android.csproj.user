@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>Samsung SM-G960F</SelectedDevice>
     <ActiveDebugProfile>Samsung SM-G960F</ActiveDebugProfile>
+    <DefaultDevice>pixel_2_q_10_0_-_api_29</DefaultDevice>
   </PropertyGroup>
 </Project>

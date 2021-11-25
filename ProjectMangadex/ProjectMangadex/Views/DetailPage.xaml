@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectMangadex.Views.DetailPage"
+             BackgroundColor="{AppThemeBinding Light=white, Dark='#191a1c'}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Padding="8">
+            <Grid HeightRequest="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="imgCover"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start"
+                />
+                <StackLayout Grid.Column="1" Padding="8">
+                    <Label x:Name="lblTitle" FontSize="20" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label x:Name="lblAuthor" FontSize="16" Text="Auteur" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
+                        <Label x:Name="lblArtist" FontSize="16" Text="Artist" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+            <StackLayout Padding="8" VerticalOptions="FillAndExpand">
+                <Label x:Name="lblDescription" FontSize="16" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
+            </StackLayout>
+            <Button Text="Follow" BackgroundColor="#ff6740" TextColor="White" Margin="16"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
