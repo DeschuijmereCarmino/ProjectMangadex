@@ -221,6 +221,33 @@ namespace ProjectMangadex.Repository
             }
         }
 
+        public static async Task<string> GetAuthorByIdAsync(Guid id)
+        {
+            using (var client = await GetClientWithAuth())
+            {
+                try
+                {
+                    string url = $"{_BASEURI}/author/{id}";
+                    string json = await client.GetStringAsync(url);
+
+
+                    if (json != null)
+                    {
+                        JObject newJson = JObject.Parse(json);
+                        string author = newJson["data"]["attributes"]["name"].ToObject<string>();
+
+                        return author;
+                    }
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         //END CLASS !!!!!!!
     }
 }
