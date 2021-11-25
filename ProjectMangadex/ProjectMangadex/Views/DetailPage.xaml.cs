@@ -1,4 +1,5 @@
 ﻿using ProjectMangadex.Models;
+using ProjectMangadex.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,12 @@ namespace ProjectMangadex.Views
             showMangaDetails();
         }
 
-        private void showMangaDetails()
+        private async void showMangaDetails()
         {
+            List<string> creators = await MangadexRepository.GetAuthorsForMangaAsync(manga);
+
+            lblAuthor.Text = string.Join(", ", creators); ;
+
             imgCover.Source = manga.Cover;
             lblTitle.Text = manga.Title;
             lblDescription.Text = manga.Description;

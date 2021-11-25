@@ -20,8 +20,8 @@
                 <StackLayout Grid.Column="1" Padding="8">
                     <Label x:Name="lblTitle" FontSize="20" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
                     <StackLayout Orientation="Horizontal">
-                        <Label x:Name="lblAuthor" FontSize="16" Text="Auteur" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
-                        <Label x:Name="lblArtist" FontSize="16" Text="Artist" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
+                        <Label x:Name="lblAuthor" FontSize="16" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
+                        <Label x:Name="lblArtist" FontSize="16" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

@@ -221,25 +221,48 @@ namespace ProjectMangadex.Repository
             }
         }
 
-        public static async Task<string> GetAuthorByIdAsync(Guid id)
+        public static async Task<List<string>> GetAuthorsForMangaAsync(Manga manga)
         {
-            using (var client = await GetClientWithAuth())
+            List<Guid> creatorIds = new List<Guid>();
+
+            foreach (var relationship in manga.Relationships)
+            {
+                switch (relationship.Type)
+                {
+                    case "author":
+                        creatorIds.Add(relationship.Id);
+                    break;
+
+                    case "artist":
+                        if (!creatorIds.Contains(relationship.Id))
+                        {
+                            creatorIds.Add(relationship.Id);
+                        }
+                    break;
+                }
+            }
+
+            using (var client = GetClient())
             {
                 try
                 {
-                    string url = $"{_BASEURI}/author/{id}";
-                    string json = await client.GetStringAsync(url);
+                    List<string> authors = new List<string>();
 
-
-                    if (json != null)
+                    foreach(var id in creatorIds)
                     {
-                        JObject newJson = JObject.Parse(json);
-                        string author = newJson["data"]["attributes"]["name"].ToObject<string>();
+                        string url = $"{_BASEURI}/author/{id}";
+                        string json = await client.GetStringAsync(url);
 
-                        return author;
+
+                        if (json != null)
+                        {
+                            JObject newJson = JObject.Parse(json);
+                            string author = newJson["data"]["attributes"]["name"].ToObject<string>();
+
+                            authors.Add(author);
+                        }
                     }
-
-                    return null;
+                    return authors;
                 }
                 catch (Exception ex)
                 {
