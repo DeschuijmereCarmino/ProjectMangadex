@@ -3,9 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectMangadex.Views.DetailPage"
              BackgroundColor="{AppThemeBinding Light=white, Dark='#191a1c'}"
-             NavigationPage.HasNavigationBar="False">
-    <ContentPage.Content>
-        <StackLayout Padding="8">
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     x:Name="tbiLogo"
+                     Priority="0"/>
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem x:Name="tbiCollection"
+                     Order="Secondary"
+                     Text="My Collection"
+                     Priority="1"
+                     />
+        <ToolbarItem x:Name="tbiLogout"
+                     Order="Secondary"
+                     Text="Logout"
+                     Priority="1"
+                     />
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="8">
             <Grid HeightRequest="200">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -31,5 +50,5 @@
             </StackLayout>
             <Button Text="Follow" BackgroundColor="#ff6740" TextColor="White" Margin="16"/>
         </StackLayout>
-    </ContentPage.Content>
+
 </ContentPage>

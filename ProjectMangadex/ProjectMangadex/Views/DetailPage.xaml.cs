@@ -20,10 +20,18 @@ namespace ProjectMangadex.Views
             InitializeComponent();
             manga = selectedManga;
             showMangaDetails();
+
+            tbiLogo.Clicked += TbiLogo_Clicked;
+        }
+
+        private void TbiLogo_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
         }
 
         private async void showMangaDetails()
         {
+            tbiLogo.IconImageSource = ImageSource.FromResource("ProjectMangadex.Assets.Mangadex.png");
             List<string> creators = await MangadexRepository.GetAuthorsForMangaAsync(manga);
 
             lblAuthor.Text = string.Join(", ", creators); ;

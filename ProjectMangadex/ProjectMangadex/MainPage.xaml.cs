@@ -21,6 +21,13 @@ namespace ProjectMangadex
             //TestModelsAndRepository();
 
             clvMangas.SelectionChanged += ClvMangas_SelectionChanged;
+
+            tbiLogo.Clicked += TbiLogo_Clicked;
+        }
+
+        private void TbiLogo_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
         }
 
         private void ClvMangas_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,6 +43,7 @@ namespace ProjectMangadex
 
         private async void LoadData()
         {
+            tbiLogo.IconImageSource = ImageSource.FromResource("ProjectMangadex.Assets.Mangadex.png");
             clvMangas.ItemsSource = await MangadexRepository.GetMangasAsync();
         }
 

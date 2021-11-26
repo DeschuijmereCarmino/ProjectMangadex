@@ -3,8 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectMangadex.MainPage"
              BackgroundColor="{AppThemeBinding Light=white, Dark='#191a1c'}"
-             NavigationPage.HasNavigationBar="False">
-
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     x:Name="tbiLogo"
+                     Priority="0"/>
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem Order="Primary" Priority="0" />
+        <ToolbarItem x:Name="tbiCollection"
+                     Order="Secondary"
+                     Text="My Collection"
+                     Priority="1"
+                     />
+        <ToolbarItem x:Name="tbiLogout"
+                     Order="Secondary"
+                     Text="Logout"
+                     Priority="1"
+                     />
+    </ContentPage.ToolbarItems>
     <CollectionView 
         x:Name="clvMangas"
         ItemsLayout="VerticalGrid, 2"
