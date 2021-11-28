@@ -118,6 +118,7 @@ namespace ProjectMangadex.Repository
                         {
                             JObject newJson = JObject.Parse(responseJson);
                             await SecureStorage.SetAsync("bearer_token", (string)newJson["token"]["session"]);
+                            await SecureStorage.SetAsync("username", user.Username);
 
                             return true;
                         }
@@ -158,6 +159,13 @@ namespace ProjectMangadex.Repository
                         JArray data = (JArray)newJson["data"];
 
                         List<Manga> mangas = data.ToObject<List<Manga>>();
+
+                        foreach (var manga in mangas)
+                        {
+                            var coverId = manga.Relationships.Find(r => r.Type == "cover_art");
+                            string cover = await GetMangaCoverByMangaIdAsync(coverId.Id);
+                            manga.Cover = $"https://uploads.mangadex.org/covers/{manga.Id}/{cover}";
+                        }
 
                         return mangas;
                     }
@@ -212,6 +220,7 @@ namespace ProjectMangadex.Repository
                     }
 
                     SecureStorage.Remove("bearer_token");
+                    SecureStorage.Remove("username");
                     Debug.WriteLine("Uitloggen succesvol");
                 }
                 catch (Exception ex)

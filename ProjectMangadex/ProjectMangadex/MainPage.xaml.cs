@@ -23,6 +23,19 @@ namespace ProjectMangadex
             clvMangas.SelectionChanged += ClvMangas_SelectionChanged;
 
             tbiLogo.Clicked += TbiLogo_Clicked;
+            tbiCollection.Clicked += TbiCollection_Clicked;
+            tbiLogout.Clicked += TbiLogout_Clicked;
+        }
+
+        private async void TbiLogout_Clicked(object sender, EventArgs e)
+        {
+            await MangadexRepository.GetUserLoggedOutAsync();
+            await Navigation.PopToRootAsync();
+        }
+
+        private void TbiCollection_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new UserPage());
         }
 
         private void TbiLogo_Clicked(object sender, EventArgs e)

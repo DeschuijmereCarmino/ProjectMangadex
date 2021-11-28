@@ -6,6 +6,10 @@ E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\De
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\ProjectMangadex.GeneratedMSBuildEditorConfig.editorconfig
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\App.xaml.g.cs
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\Views\DetailPage.xaml.g.cs
+E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
+E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\Views\NoNetworkPage.xaml.g.cs
+E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\Views\UserPage.xaml.g.cs
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\ProjectMangadex.AssemblyInfoInputs.cache
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\ProjectMangadex.AssemblyInfo.cs
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\ProjectMangadex.csproj.CoreCompileInputs.cache
@@ -13,6 +17,3 @@ E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\De
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\ProjectMangadex.dll
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\ref\ProjectMangadex.dll
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\ProjectMangadex.pdb
-E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\Views\NoNetworkPage.xaml.g.cs
-E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
-E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex\obj\Debug\netstandard2.0\Views\DetailPage.xaml.g.cs

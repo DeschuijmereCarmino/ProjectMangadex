@@ -74,6 +74,7 @@ E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Androi
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\mscorlib.dll
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\mscorlib.pdb
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\netstandard.dll
+E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\Newtonsoft.Json.dll
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\ProjectMangadex.Android.dll
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\ProjectMangadex.Android.pdb
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\ProjectMangadex.dll
@@ -627,4 +628,3 @@ E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Androi
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\stamp\_GenerateJavaStubs.stamp
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\stamp\_GeneratePackageManagerJava.stamp
 E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\stamp\_ResolveLibraryProjectImports.stamp
-E:\MCT\Device Programming\ProjectMangadex\ProjectMangadex\ProjectMangadex.Android\obj\Debug\120\android\assets\Newtonsoft.Json.dll
