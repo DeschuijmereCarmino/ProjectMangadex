@@ -46,8 +46,10 @@
             </Grid>
 
             <StackLayout Padding="8" VerticalOptions="FillAndExpand">
+            <ScrollView>
                 <Label x:Name="lblDescription" FontSize="16" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
-            </StackLayout>
+            </ScrollView>
+        </StackLayout>
             <Button x:Name="btnFollow" BackgroundColor="#ff6740" TextColor="White" Margin="16"/>
         </StackLayout>
 
