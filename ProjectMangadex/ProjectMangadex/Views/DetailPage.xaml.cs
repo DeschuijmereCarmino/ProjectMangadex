@@ -14,16 +14,33 @@ namespace ProjectMangadex.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
-        public Manga manga { get; set; }
+        public Manga Manga { get; set; }
+        public Boolean IsFollowed { get; set; }
         public DetailPage(Manga selectedManga)
         {
             InitializeComponent();
-            manga = selectedManga;
-            showMangaDetails();
+            Manga = selectedManga;
+            ShowMangaDetails();
+
+            btnFollow.Clicked += BtnFollow_Clicked;
 
             tbiLogo.Clicked += TbiLogo_Clicked;
             tbiCollection.Clicked += TbiCollection_Clicked;
             tbiLogout.Clicked += TbiLogout_Clicked;
+        }
+
+        private async void BtnFollow_Clicked(object sender, EventArgs e)
+        {
+            if (!IsFollowed)
+            {
+                await MangadexRepository.FollowMangaAsync(Manga.Id);
+                SetFollowButton();
+            }
+            else
+            {
+                await MangadexRepository.UnfollowMangaAsync(Manga.Id);
+                SetFollowButton();
+            }
         }
 
         private async void TbiLogout_Clicked(object sender, EventArgs e)
@@ -42,16 +59,32 @@ namespace ProjectMangadex.Views
             Navigation.PushAsync(new MainPage());
         }
 
-        private async void showMangaDetails()
+        private async void ShowMangaDetails()
         {
+            SetFollowButton();
             tbiLogo.IconImageSource = ImageSource.FromResource("ProjectMangadex.Assets.Mangadex.png");
-            List<string> creators = await MangadexRepository.GetAuthorsForMangaAsync(manga);
+            List<string> creators = await MangadexRepository.GetAuthorsForMangaAsync(Manga);
 
             lblAuthor.Text = string.Join(", ", creators); ;
 
-            imgCover.Source = manga.Cover;
-            lblTitle.Text = manga.Title;
-            lblDescription.Text = manga.Description;
+            imgCover.Source = Manga.Cover;
+            lblTitle.Text = Manga.Title;
+            lblDescription.Text = Manga.Description;
+
+
+        }
+
+        private async void SetFollowButton()
+        {
+            IsFollowed = await MangadexRepository.CheckMangaFollowed(Manga.Id);
+            if (!IsFollowed)
+            {
+                btnFollow.Text = "Follow";
+            }
+            else
+            {
+                btnFollow.Text = "Unfollow";
+            }
         }
     }
 }

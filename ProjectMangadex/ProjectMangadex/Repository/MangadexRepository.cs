@@ -38,7 +38,7 @@ namespace ProjectMangadex.Repository
         {
             using (var client = GetClient())
             {
-                string url = $"{_BASEURI}/manga";
+                string url = $"{_BASEURI}/manga?limit=20";
                 try
                 {
                     string json = await client.GetStringAsync(url);
@@ -180,7 +180,7 @@ namespace ProjectMangadex.Repository
             }
         }
 
-        public static async Task FollowMangaAsync(string mangaId)
+        public static async Task FollowMangaAsync(Guid mangaId)
         {
             using (var client = await GetClientWithAuth())
             {
@@ -196,6 +196,31 @@ namespace ProjectMangadex.Repository
                     else
                     {
                         Debug.WriteLine("Volgen succesvol");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static async Task UnfollowMangaAsync(Guid mangaId)
+        {
+            using (var client = await GetClientWithAuth())
+            {
+                try
+                {
+                    string url = $"{_BASEURI}/manga/{mangaId}/follow";
+                    var response = await client.DeleteAsync(url);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception($"Er ging iets mis bij het ontvolgen van de manga. ({response.StatusCode} : {response.ReasonPhrase})");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Ontvolgen succesvol");
                     }
                 }
                 catch (Exception ex)
@@ -280,6 +305,38 @@ namespace ProjectMangadex.Repository
             }
         }
 
-        //END CLASS !!!!!!!
+        public static async Task<Boolean> CheckMangaFollowed(Guid mangaId)
+        {
+            using (var client = await GetClientWithAuth())
+            {
+                try
+                {
+                    await LogToken();
+                    string url = $"{_BASEURI}/user/follows/manga/{mangaId}";
+
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        //!!!!!!! END CLASS !!!!!!!
     }
 }

@@ -14,6 +14,7 @@ namespace ProjectMangadex
 {
     public partial class MainPage : ContentPage
     {
+        public int Offset { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -26,6 +27,11 @@ namespace ProjectMangadex
             tbiCollection.Clicked += TbiCollection_Clicked;
             tbiLogout.Clicked += TbiLogout_Clicked;
         }
+
+        //private async void ClvMangas_RemainingItemsThresholdReached(object sender, EventArgs e)
+        //{
+        //    clvMangas.ItemsSource = await MangadexRepository.GetMangasAsync();
+        //}
 
         private async void TbiLogout_Clicked(object sender, EventArgs e)
         {
@@ -58,6 +64,9 @@ namespace ProjectMangadex
         {
             tbiLogo.IconImageSource = ImageSource.FromResource("ProjectMangadex.Assets.Mangadex.png");
             clvMangas.ItemsSource = await MangadexRepository.GetMangasAsync();
+
+            //clvMangas.RemainingItemsThreshold = 1;
+            //clvMangas.RemainingItemsThresholdReached += ClvMangas_RemainingItemsThresholdReached;
         }
 
         private async void TestModelsAndRepository()
@@ -93,7 +102,9 @@ namespace ProjectMangadex
                 Debug.WriteLine(followedManga.Title);
             }
 
-            await MangadexRepository.FollowMangaAsync("40bc649f-7b49-4645-859e-6cd94136e722");
+            Guid mangaid = Guid.Parse("40bc649f-7b49-4645-859e-6cd94136e722");
+
+            await MangadexRepository.FollowMangaAsync(mangaid);
 
             await MangadexRepository.GetUserLoggedOutAsync();
         }

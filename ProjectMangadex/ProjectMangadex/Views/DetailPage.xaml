@@ -48,7 +48,7 @@
             <StackLayout Padding="8" VerticalOptions="FillAndExpand">
                 <Label x:Name="lblDescription" FontSize="16" TextColor="{AppThemeBinding Light='#242424', Dark=white}"/>
             </StackLayout>
-            <Button Text="Follow" BackgroundColor="#ff6740" TextColor="White" Margin="16"/>
+            <Button x:Name="btnFollow" BackgroundColor="#ff6740" TextColor="White" Margin="16"/>
         </StackLayout>
 
 </ContentPage>
