@@ -27,6 +27,11 @@ namespace ProjectMangadex.Views
 
         }
 
+        protected override void OnAppearing()
+        {
+            LoadData();
+        }
+
         private void TbiLogo_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new MainPage());
