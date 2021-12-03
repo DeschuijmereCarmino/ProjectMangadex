@@ -34,11 +34,13 @@ namespace ProjectMangadex.Repository
             return client;
         }
 
+        //public static async Task<List<Manga>> GetMangasAsync(int offset)
         public static async Task<List<Manga>> GetMangasAsync()
         {
             using (var client = GetClient())
             {
-                string url = $"{_BASEURI}/manga?limit=20";
+                //string url = $"{_BASEURI}/manga?offset={offset}";
+                string url = $"{_BASEURI}/manga";
                 try
                 {
                     string json = await client.GetStringAsync(url);

@@ -3,6 +3,7 @@ using ProjectMangadex.Repository;
 using ProjectMangadex.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -14,7 +15,9 @@ namespace ProjectMangadex
 {
     public partial class MainPage : ContentPage
     {
-        public int Offset { get; set; }
+        //public int Offset { get; set; }
+        //private ObservableCollection<Manga> collection = new ObservableCollection<Manga>();
+
         public MainPage()
         {
             InitializeComponent();
@@ -30,7 +33,12 @@ namespace ProjectMangadex
 
         //private async void ClvMangas_RemainingItemsThresholdReached(object sender, EventArgs e)
         //{
-        //    clvMangas.ItemsSource = await MangadexRepository.GetMangasAsync();
+        //    Offset += 10;
+        //    List<Manga> list = await MangadexRepository.GetMangasAsync(Offset);
+        //    foreach (var manga in list)
+        //    {
+        //        collection.Add(manga);
+        //    }
         //}
 
         private async void TbiLogout_Clicked(object sender, EventArgs e)
@@ -62,16 +70,26 @@ namespace ProjectMangadex
 
         private async void LoadData()
         {
+            //Offset = 0;
             tbiLogo.IconImageSource = ImageSource.FromResource("ProjectMangadex.Assets.Mangadex.png");
             clvMangas.ItemsSource = await MangadexRepository.GetMangasAsync();
 
-            //clvMangas.RemainingItemsThreshold = 1;
+            //List<Manga> list = await MangadexRepository.GetMangasAsync(Offset);
+            //foreach(var manga in list)
+            //{
+            //    collection.Add(manga);
+            //}
+
+            //clvMangas.ItemsSource = collection;
+
+            //clvMangas.RemainingItemsThreshold = 2;
             //clvMangas.RemainingItemsThresholdReached += ClvMangas_RemainingItemsThresholdReached;
         }
 
         private async void TestModelsAndRepository()
         {
             List<Manga> mangas = await MangadexRepository.GetMangasAsync();
+            //List<Manga> mangas = await MangadexRepository.GetMangasAsync(Offset);
 
             foreach (var manga in mangas)
             {

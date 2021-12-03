@@ -22,7 +22,6 @@ namespace ProjectMangadex.Views
 
             clvMangas.SelectionChanged += ClvMangas_SelectionChanged;
 
-
             tbiLogo.Clicked += TbiLogo_Clicked;
             tbiLogout.Clicked += TbiLogout_Clicked;
 
