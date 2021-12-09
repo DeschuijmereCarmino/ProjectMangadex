@@ -339,6 +339,31 @@ namespace ProjectMangadex.Repository
             }
         }
 
+        public static async Task CreateAccount(User user)
+        {
+            using (var client = GetClient())
+            {
+                try
+                { 
+                    string url = $"{_BASEURI}/account/create";
+                    string json = JsonConvert.SerializeObject(user);
+
+                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync(url, content);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception($"Er ging iets mis bij het creeren van het account.({response.StatusCode} : {response.ReasonPhrase})");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         //!!!!!!! END CLASS !!!!!!!
     }
 }
